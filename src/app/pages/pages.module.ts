@@ -5,7 +5,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { HeaderModule } from '../core/header/header.module';
 import { PostModule } from './posts/posts.module';
-
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { PostModule } from './posts/posts.module';
     CommonModule,
     PagesRoutingModule,
     HeaderModule,
-    PostModule
+    PostModule,
+    MaterialModule,
   ]
 
 })

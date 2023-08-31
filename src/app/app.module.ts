@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
+
 import { PagesModule } from './pages/pages.module';
 import { counterReducer } from './state/counter.reducer';
+import { BrowserModule } from '@angular/platform-browser';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import { counterReducer } from './state/counter.reducer';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    StoreModule.forRoot({userInfo:counterReducer  })
+    BrowserAnimationsModule,
+    // PortalModule,
+    StoreModule.forRoot({ userInfo: counterReducer })
 
   ],
   providers: [],
