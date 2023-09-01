@@ -27,7 +27,7 @@ import { PostsEffects } from './state/posts.effects';
     BrowserAnimationsModule,
 
     // PortalModule,
-    StoreModule.forRoot({ userInfo: counterReducer ,postes: postsReducer }),
+    StoreModule.forRoot({ userInfo: counterReducer ,posts: postsReducer }),
     EffectsModule.forRoot([PostsEffects]),
     HttpClientModule,
 
@@ -36,7 +36,6 @@ import { PostsEffects } from './state/posts.effects';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
 
 
 

@@ -1,13 +1,15 @@
 // posts.selectors.ts
 
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { PostsState } from './posts.reducer'; // Import the state interface
+import { PostsState } from './posts.reducer';
 
-// Create a feature selector to select the posts state
-const selectPostsState = createFeatureSelector<PostsState>('postes');
+const selectPostsState = createFeatureSelector<PostsState>('posts');
 
-// Define the selector to get the posts data
-export const selectPostsData = createSelector(
-  selectPostsState,
-  (state) => state.data
-);
+export const selectPostsData = createSelector(selectPostsState, (state) =>state.data);
+
+
+
+
+
+
+

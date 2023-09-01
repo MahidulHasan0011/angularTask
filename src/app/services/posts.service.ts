@@ -12,7 +12,7 @@ const API_POST = environment.apiBaseLink ;
   providedIn: 'root'
 })
 export class PostsService {
-
+ private allpost?:any[]
   posts$!: Observable<Post[]>;
 
   constructor(
@@ -21,21 +21,23 @@ export class PostsService {
   ) { }
 
 
-  getAllPosts() {
-    return this.httpClient.get<{data: Post[]}>(API_POST + 'posts');
+
+  getAllPosts(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_POST + 'posts');
   }
 
+
   getPostWIthPAgination(page?:number, limite?:number){
+    return this.store.pipe(select(selectPostsData)).subscribe(res=>{
+      console.log("resss",res);
 
-    // if this route with same page and same limite hitted the get data from state store
-    // this.posts$ = this.store.pipe(select(selectPostsData));
-    // else cale api
-    // this.httpClient.get<{data: Post[]}>(API_POST + 'posts' + '?_page=' + page + '&_limit=' + limite);
-
-
-
+    });
 
   }
 
 
 }
+
+
+
+

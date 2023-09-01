@@ -8,19 +8,21 @@ export interface PostsState {
   error: any;
 }
 
-const postes: PostsState = {
+const posts: PostsState = {
   data: [],
   loading: false,
   error: null,
 };
+console.log("posts",posts);
+
 
 export const postsReducer = createReducer(
-  postes,
-  on(loadPostsSuccess, (state, { data }) => ({
+  posts,
+  on(loadPostsSuccess, (state, { posts }) => ({
     ...state,
-    data,
-    loading: false,
-    error: null,
+    data: posts,
+    posts,
+    loading: false
   })),
   on(loadPostsFailure, (state, { error }) => ({
     ...state,
@@ -28,6 +30,61 @@ export const postsReducer = createReducer(
     error,
   }))
 );
+
+
+
+
+
+
+
+
+
+
+// posts.reducer.ts
+
+// import { createReducer, on } from '@ngrx/store';
+// import * as PostsActions from './posts.actions'; // Corrected import
+// import { Post } from '../interfaces/blog';
+
+// export interface PostsState {
+//   data: Post[];
+//   loading: boolean;
+//   error: any;
+// }
+
+// const initialState: PostsState = {
+//   data: [],
+//   loading: false,
+//   error: null,
+// };
+
+// export const postsReducer = createReducer(
+//   initialState,
+//   on(PostsActions.loadPostsSuccess, (state, { posts }) => ({
+//     ...state,
+//     data: posts,
+//     loading: false,
+//   })),
+//   on(PostsActions.loadPostsFailure, (state, { error }) => ({
+//     ...state,
+//     loading: false,
+//     error,
+//   }))
+// );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

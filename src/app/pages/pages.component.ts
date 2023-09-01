@@ -13,7 +13,7 @@ export class PagesComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.store.dispatch(loadPosts());
+ 
   }
 
 }

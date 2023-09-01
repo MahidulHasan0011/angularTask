@@ -1,10 +1,11 @@
+
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-// import { PostsService } from './posts.service';
 import * as fromPostsActions from './posts.actions';
 import { PostsService } from '../services/posts.service';
+import { Post } from '../interfaces/blog';
 
 @Injectable()
 export class PostsEffects {
@@ -15,7 +16,7 @@ export class PostsEffects {
       ofType(fromPostsActions.loadPosts),
       switchMap(() =>
         this.postsService.getAllPosts().pipe(
-          map((response) => fromPostsActions.loadPostsSuccess({ data: response.data })),
+          map((posts: Post[]) => fromPostsActions.loadPostsSuccess({posts})),
           catchError((error) => of(fromPostsActions.loadPostsFailure({ error })))
         )
       )
@@ -34,3 +35,10 @@ export class PostsEffects {
 
 
 
+
+
+
+
+
+
+;
