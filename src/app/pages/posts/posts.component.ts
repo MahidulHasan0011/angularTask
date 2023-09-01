@@ -29,12 +29,12 @@ export class PostComponent implements OnInit {
    posts$: Observable<Post[]>;
    allPosts?: Post[];
    postsWithPagination?: Post[];
-
     pageEvent!: PageEvent;
     length = 0;
     pageSize = 10;
     pageIndex = 0;
     pageSizeOptions = [5, 10, 25];
+     maxTextLength = 100;
   constructor(
       public uiService: UiService,
       private store: Store<PostsState>,
@@ -74,6 +74,11 @@ export class PostComponent implements OnInit {
     console.log("slicedData:", this.postsWithPagination);
 
   }
+
+
+
+
+
 
 }
 

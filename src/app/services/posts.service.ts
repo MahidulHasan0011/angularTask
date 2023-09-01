@@ -27,13 +27,15 @@ export class PostsService {
   }
 
 
-  getPostWIthPAgination(page?:number, limite?:number){
-    return this.store.pipe(select(selectPostsData)).subscribe(res=>{
-      console.log("resss",res);
 
-    });
-
+  getCommentByPostID(id: number) {
+    return this.httpClient.get<Comment[]>(API_POST + 'posts/' + id + '/comments');
   }
+
+
+
+
+
 
 
 }

@@ -20,10 +20,14 @@ const routes: Routes = [
             path: "home",
             loadChildren: () => import('./posts/posts.module').then(m => m.PostModule)
           },
+
           {
-            path: "posts-details",
-            loadChildren: () => import('./posts-details/post-details.module').then(m => m.PostDetailsModule)
+            path: "posts-details/:id",
+            loadChildren: () => import('./posts-details/posts-details.module').then(m => m.PostsDetailsModule)
           },
+
+
+
           {
             path:'sign-up',
             canActivate: [UserAuthStateGuard],
