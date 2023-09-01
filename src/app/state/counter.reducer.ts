@@ -1,6 +1,6 @@
 import { createReducer,on } from "@ngrx/store";
 import { userInfo } from "./counter.state";
-import { saveUserInfo } from "./counter.action";
+import { saveUserInfo ,changeIsUserStatus} from "./counter.action";
 
 
 
@@ -12,7 +12,14 @@ const _counterReducer = createReducer(
     ...state,
     username,
     password
-  }))
+  })),
+  on(changeIsUserStatus,(state)=>{
+    return{
+     ...state,
+     isUser:true
+
+    }
+ })
 
 )
 

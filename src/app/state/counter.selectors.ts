@@ -9,3 +9,6 @@ export const getUserName = createSelector(getUserInfo,(state)=>{
 export const getPassword = createSelector(getUserInfo,(state)=>{
   return state.password;
 })
+export const getIsUserStatus = createSelector(getUserInfo,(state)=>{
+  return state.isUser;
+})

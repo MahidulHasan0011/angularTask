@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { userInfoInterface } from '../state/counter.state';
 import { Store } from '@ngrx/store';
-import { getPassword, getUserName } from '../state/counter.selectors';
+import { getPassword, getUserName,getIsUserStatus } from '../state/counter.selectors';
 import { changeIsUserStatus } from '../state/counter.action';
 
 @Injectable({
@@ -10,6 +10,9 @@ import { changeIsUserStatus } from '../state/counter.action';
 })
 export class UserService {
 
+
+  // private isUser = false;
+  private userStatusListener = new Subject<boolean>();
 
   constructor(
     private store:Store<{userInfo:userInfoInterface}>
@@ -22,6 +25,12 @@ export class UserService {
     getPassword(){
       return this.store.select(getPassword)
     }
+    getuserStatus(){
+      return this.store.select(getIsUserStatus)
+    }
+     getUserStatusListener() {
+    return this.userStatusListener.asObservable();
+  }
     changeIsUserStatus(){
       this.store.dispatch(changeIsUserStatus())
     }

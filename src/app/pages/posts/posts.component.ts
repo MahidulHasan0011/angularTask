@@ -1,65 +1,75 @@
 import { Component, OnInit, inject } from '@angular/core';
-import {MatSnackBar, MatSnackBarRef, MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatButtonModule} from '@angular/material/button';
-// import {MatInputModule} from '@angular/material/input';
-// import {FormsModule} from '@angular/forms';
-// import {MatFormFieldModule} from '@angular/material/form-field';
+import { PageEvent } from '@angular/material/paginator';
+import{Store, select}from"@ngrx/store";
+import {Observable, Subscription} from "rxjs";
+import { Post } from 'src/app/interfaces/blog';
 import { UiService } from 'src/app/services/ui.service';
+import { UserService } from 'src/app/services/user.service';
+import { getIsUserStatus } from 'src/app/state/counter.selectors';
+import { userInfoInterface } from 'src/app/state/counter.state';
+import { selectPostsData } from 'src/app/state/posts.selectors';
 @Component({
   selector: 'app-home',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
-  // standalone: true,
-  // imports: [MatFormFieldModule, FormsModule, MatInputModule, MatButtonModule, MatSnackBarModule],
+
 })
 export class PostComponent implements OnInit {
-  durationInSeconds = 5;
+  length = 100;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
+  pageEvent: PageEvent | undefined;
+
+  posts$!: Observable<Post[]>;
+  useRAccessdSubscription: Subscription = new Subscription();
+   isUser?:boolean
   constructor(
-      // private _snackBar: MatSnackBar,
-      public uiService: UiService
+
+      public uiService: UiService,
+      public userService: UserService,
+      // private store:Store<{userInfo:userInfoInterface}>,
+      private store: Store
     ) { }
 
   ngOnInit(): void {
+
+    this.useRAccessdSubscription=this.userService.getuserStatus().subscribe(isU=>{
+      this.isUser=isU;
+
+    })
+
+    this.getPosts();
   }
 
-  click(){
-    // this._snackBar.openFromComponent(PizzaPartyAnnotatedComponent, {
-    //   duration: this.durationInSeconds * 1000,
-    // });
-    console.log("is it this click?");
+  getPosts(page?:number, limite?:number){
 
-    // this.uiService.success("ffhfhf")
-    // this._snackBar.open("is it this click?");
+    console.log("isUser",this.isUser);
+    console.log("posts",this.posts$ );
   }
+
+  handlePageEvent(e: PageEvent) {
+    this.pageEvent = e;
+    this.length = e.length;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+
+    this.getPosts(this.pageIndex, this.pageSize);
+  }
+
+
 }
 
 
 
-@Component({
-  selector: 'snack-bar-annotated-component-example-snack',
-  template: `
-    <span class="example-pizza-party" matSnackBarLabel>
-      Pizza party!!!
-    </span>
-    <span matSnackBarActions>
-      <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">🍕</button>
-    </span>
-  `,
-  styles: [
-    `
-    :host {
-      display: flex;
-    }
 
-    .example-pizza-party {
-      color: hotpink;
-    }
-  `,
-  ],
-  standalone: true,
-  imports: [MatButtonModule, MatSnackBarModule],
-})
-export class PizzaPartyAnnotatedComponent {
-  snackBarRef = inject(MatSnackBarRef);
-}
+
+
+
+
+
+
+
+
 

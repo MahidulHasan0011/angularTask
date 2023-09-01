@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { loadPosts } from '../state/posts.actions';
+
 
 @Component({
   selector: 'app-pages',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.store.dispatch(loadPosts());
   }
 
 }
+
+
+
+
+
+

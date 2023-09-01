@@ -55,10 +55,11 @@ export class SignupComponent implements OnInit {
 
         console.log('Passwords do not match');
 
-      this.uiService.warn("vhdfjlikvdfbhvldfkvhbdflkvjdbvlkdbvdfljkvbdfvjlkbdfilv");
+      this.uiService.warn("Passwords and confirm password does not match");
       }
     }
     else{
+      this.uiService.wrong("Somthing is rong");
       console.log('Form is invalid');
 
     }

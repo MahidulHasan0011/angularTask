@@ -33,10 +33,7 @@
         *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
         Confirm Password is required.
       </div>
-      <div class="pt-3 text-orange-800 "
-        *ngIf="signupForm.get('confirmPassword')?.value !== '' && signupForm.get('confirmPassword')?.value !== signupForm.get('password')?.value">
-        Password and Confirm Password do not match.
-      </div>
+    
       </div>
 
 
