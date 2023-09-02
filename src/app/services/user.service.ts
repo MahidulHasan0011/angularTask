@@ -12,7 +12,7 @@ const API_USER = environment
   providedIn: 'root'
 })
 export class UserService {
-
+  private showHeader :boolean=false;
 
   // private isUser = false;
   private userStatusListener = new Subject<boolean>();
@@ -21,6 +21,11 @@ export class UserService {
     private store:Store<{userInfo:userInfoInterface}>,
     private router: Router,
     ) { }
+
+
+    visibolShowHeader(){
+      return this.showHeader;
+   }
 
     getUserName(){
       return this.store.select(getUserName)
@@ -51,5 +56,10 @@ export class UserService {
 
 
     }
+
+
+
+
+
 
 }
