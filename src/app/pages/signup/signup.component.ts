@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { saveUserInfo } from 'src/app/state/counter.action';
-import { userInfoInterface } from 'src/app/state/counter.state';
+import { saveUserInfo } from 'src/app/state/user.action';
+import { userInfoInterface } from 'src/app/state/user.state';
 import { Router } from '@angular/router';
 import { UiService } from 'src/app/services/ui.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/services/ui.service';
 import { UserService } from 'src/app/services/user.service';
-import { userInfoInterface } from 'src/app/state/counter.state';
+import { userInfoInterface } from 'src/app/state/user.state';
 
 @Component({
   selector: 'app-header',
@@ -13,9 +14,13 @@ export class HeaderComponent implements OnInit {
   useRAccessdSubscription: Subscription = new Subscription();
   isUser?:boolean
   userName?:string
+  // showHeader?:boolean = true;
+
+
   constructor(
     private store:Store<{userInfo:userInfoInterface}>,
     private userService: UserService,
+
 
   ) { }
 
@@ -30,7 +35,10 @@ export class HeaderComponent implements OnInit {
       }
 
     })
+
+
     console.log("isUser",this.isUser);
+
   }
 
 
@@ -41,4 +49,18 @@ export class HeaderComponent implements OnInit {
 
   }
 
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

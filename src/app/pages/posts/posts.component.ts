@@ -4,8 +4,8 @@ import {Observable, Subscription} from "rxjs";
 import { Post } from 'src/app/interfaces/blog';
 import { PostsService } from 'src/app/services/posts.service';
 import { UiService } from 'src/app/services/ui.service';
-import { getIsUserStatus } from 'src/app/state/counter.selectors';
-import { userInfoInterface } from 'src/app/state/counter.state';
+import { getIsUserStatus } from 'src/app/state/user.selectors';
+import { userInfoInterface } from 'src/app/state/user.state';
 import { loadPosts } from 'src/app/state/posts.actions';
 import { selectPostsData } from 'src/app/state/posts.selectors';
 // import { loadPosts } from './state/posts.actions';
@@ -86,43 +86,4 @@ export class PostComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // post.component.ts
-// import { Component, OnInit } from '@angular/core';
-// import { Store } from '@ngrx/store';
-// import { loadPosts } from './posts.actions'; // Import your action
-// import { PostsState } from './posts.reducer'; // Import your state
-// import { selectPostsData } from './posts.selectors'; // Import your selector
-// import { Observable } from 'rxjs';
-
-// @Component({
-//   selector: 'app-post',
-//   templateUrl: './post.component.html',
-//   styleUrls: ['./post.component.css'],
-// })
-// export class PostComponent implements OnInit {
-//   posts$: Observable<Post[]>;
-
-//   constructor(private store: Store<PostsState>) {
-//     this.posts$ = this.store.select(selectPostsData);
-//   }
-
-//   ngOnInit() {
-//     this.store.dispatch(loadPosts());
-//   }
-// }
 

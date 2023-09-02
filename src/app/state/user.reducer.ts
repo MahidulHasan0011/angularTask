@@ -1,6 +1,6 @@
 import { createReducer,on } from "@ngrx/store";
-import { userInfo } from "./counter.state";
-import { saveUserInfo ,changeIsUserStatus} from "./counter.action";
+import { userInfo } from "./user.state";
+import { saveUserInfo ,changeIsUserStatus} from "./user.action";
 
 
 

@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
 import { UiService } from 'src/app/services/ui.service';
 import { UserService } from 'src/app/services/user.service';
-import { changeIsUserStatus } from 'src/app/state/counter.action';
-import { getPassword, getUserName } from 'src/app/state/counter.selectors';
-import { userInfoInterface } from 'src/app/state/counter.state';
+import { changeIsUserStatus } from 'src/app/state/user.action';
+import { getPassword, getUserName } from 'src/app/state/user.selectors';
+import { userInfoInterface } from 'src/app/state/user.state';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -26,6 +26,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     private router: Router,
     private userService: UserService,
     private uiService: UiService,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.signInForm = this.formBuilder.group({
       username: [null, [Validators.required]],
@@ -63,7 +64,17 @@ export class SigninComponent implements OnInit, OnDestroy {
 
         this.userService.changeIsUserStatus(true);
         this.uiService.success("Signin seccesfull");
-        this.router.navigate(['/', 'home']);
+
+        const returnUrl = this.activatedRoute.snapshot.queryParamMap.get('returnUrl');
+        if (returnUrl && returnUrl.match(/^\/posts-details\/\d+$/)) {
+          // Return to the "posts-details/:id" route
+          this.router.navigateByUrl(returnUrl);
+        }else{
+
+
+          this.router.navigate(['/', 'home']);
+        }
+
 
 
       }
@@ -91,3 +102,18 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

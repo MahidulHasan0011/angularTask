@@ -1,10 +1,35 @@
+// comment.actions.ts
 import { createAction, props } from '@ngrx/store';
-import { Post } from '../interfaces/blog';
+// import { Comment } from 'path-to-comment-model';
+import { Comment } from '../interfaces/comment';
 
-export const loadPosts = createAction('[posts] Load Posts');
-export const loadPostsSuccess = createAction('[posts] Load Posts Success',
- props<{ posts: Post[] }>());
-export const loadPostsFailure = createAction('[posts] Load Posts Failure',
-props<{ error: any }>());
+export const loadComments = createAction(
+  '[Comments] Load Comments',
+  props<{ postId: number }>()
+);
+
+export const loadCommentsSuccess = createAction(
+  '[Comments] Load Comments Success',
+
+
+  props<{ comments: Comment[] }>()
+
+);
+
+export const loadCommentsFailure = createAction(
+  '[Comments] Load Comments Failure',
+  props<{ error: any }>()
+);
+
+
+export const saveCommentText = createAction(
+  '[Comment] Save Comment Text',
+  props<{ text: string }>()
+);
+
+export const addComment = createAction(
+  '[Comment] Add Comment',
+  props<{ postId: number; body: string; name: string | undefined }>()
+);
 
 

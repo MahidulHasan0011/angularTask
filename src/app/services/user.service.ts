@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { userInfoInterface } from '../state/counter.state';
+import { userInfoInterface } from '../state/user.state';
 import { Store } from '@ngrx/store';
-import { getPassword, getUserName,getIsUserStatus } from '../state/counter.selectors';
-import { changeIsUserStatus } from '../state/counter.action';
+import { getPassword, getUserName,getIsUserStatus } from '../state/user.selectors';
+import { changeIsUserStatus } from '../state/user.action';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 

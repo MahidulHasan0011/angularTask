@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomLoginModalComponent } from '../shared/posts/custom-login-modal/custom-login-modal.component';
+import { CustomLoginModalComponent } from '../shared/custom-login-modal/custom-login-modal.component';
 
 
 @Injectable({

@@ -18,13 +18,16 @@ const routes: Routes = [
           },
           {
             path: "home",
-            loadChildren: () => import('./posts/posts.module').then(m => m.PostModule)
+            loadChildren: () => import('./posts/posts.module').then(m => m.PostModule),
+
           },
 
           {
             path: "posts-details/:id",
-            loadChildren: () => import('./posts-details/posts-details.module').then(m => m.PostsDetailsModule)
+            loadChildren: () => import('./posts-details/posts-details.module').then(m => m.PostsDetailsModule),
+
           },
+
 
 
 
@@ -32,12 +35,12 @@ const routes: Routes = [
             path:'sign-up',
             canActivate: [UserAuthStateGuard],
             loadChildren:()=>import('./signup/signup.module').then(m=>m.SignupModule),
-            data: {preload: false, delay: false},
+            data: {preload: false, delay: false ,showHeader: false},
           },{
             path:'sign-in',
             canActivate: [UserAuthStateGuard],
             loadChildren:()=>import('./signin/signin.module').then(m=>m.SigninModule),
-            data: {preload: true, delay: false},
+            data: {preload: true, delay: false,showHeader: false  },
           }
         ]
 

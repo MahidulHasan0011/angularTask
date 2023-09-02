@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { userInfoInterface } from "./counter.state";
+import { userInfoInterface } from "./user.state";
 
 const getUserInfo = createFeatureSelector<userInfoInterface>('userInfo');
 
