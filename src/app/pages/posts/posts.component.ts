@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
     pageSizeOptions = [5, 10, 25];
      maxTextLength = 100;
   constructor(
-      public uiService: UiService,
+
       private store: Store<PostsState>,
       private postService:PostsService
   ) {

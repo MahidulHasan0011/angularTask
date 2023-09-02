@@ -12,18 +12,33 @@ import { userInfoInterface } from 'src/app/state/counter.state';
 export class HeaderComponent implements OnInit {
   useRAccessdSubscription: Subscription = new Subscription();
   isUser?:boolean
+  userName?:string
   constructor(
     private store:Store<{userInfo:userInfoInterface}>,
-    public userService: UserService,
+    private userService: UserService,
+
   ) { }
 
   ngOnInit(): void {
 
     this.useRAccessdSubscription=this.userService.getuserStatus().subscribe(isU=>{
       this.isUser=isU;
+      if(this.isUser){
+        this.userService.getUserName().subscribe(uName=>{
+         this.userName=uName;
+        })
+      }
 
     })
     console.log("isUser",this.isUser);
+  }
+
+
+
+  userLogOut(){
+    this.userService.userLogOut(false);
+
+
   }
 
 }

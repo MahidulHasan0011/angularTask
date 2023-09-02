@@ -13,7 +13,7 @@ const posts: PostsState = {
   loading: false,
   error: null,
 };
-console.log("posts",posts);
+
 
 
 export const postsReducer = createReducer(

@@ -16,8 +16,7 @@ export class UiService {
   constructor(
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
-    // private bottomSheet: MatBottomSheet,
-    // private router: Router,
+
   ) {
   }
 

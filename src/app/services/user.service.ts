@@ -4,7 +4,10 @@ import { userInfoInterface } from '../state/counter.state';
 import { Store } from '@ngrx/store';
 import { getPassword, getUserName,getIsUserStatus } from '../state/counter.selectors';
 import { changeIsUserStatus } from '../state/counter.action';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
+const API_USER = environment
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +18,8 @@ export class UserService {
   private userStatusListener = new Subject<boolean>();
 
   constructor(
-    private store:Store<{userInfo:userInfoInterface}>
+    private store:Store<{userInfo:userInfoInterface}>,
+    private router: Router,
     ) { }
 
     getUserName(){
@@ -31,8 +35,21 @@ export class UserService {
      getUserStatusListener() {
     return this.userStatusListener.asObservable();
   }
-    changeIsUserStatus(){
-      this.store.dispatch(changeIsUserStatus())
+    changeIsUserStatus(isUser:boolean |undefined){
+      this.store.dispatch(changeIsUserStatus({isUser} ))
+    }
+
+
+    userLogOut(isUser:boolean |undefined) {
+
+      // this.isUser = false;
+      this.router.navigate([environment.userBaseUrl]);
+
+      this.userStatusListener.next(false);
+
+      this.store.dispatch(changeIsUserStatus({isUser} ))
+
+
     }
 
 }

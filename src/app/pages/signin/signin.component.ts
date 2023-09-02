@@ -24,8 +24,8 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    public userService: UserService,
-    public uiService: UiService,
+    private userService: UserService,
+    private uiService: UiService,
   ) {
     this.signInForm = this.formBuilder.group({
       username: [null, [Validators.required]],
@@ -61,7 +61,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       if (this.signInForm.value.username === this.userId && this.signInForm.value.password === this.password) {
         console.log('Success');
 
-        this.userService.changeIsUserStatus();
+        this.userService.changeIsUserStatus(true);
         this.uiService.success("Signin seccesfull");
         this.router.navigate(['/', 'home']);
 

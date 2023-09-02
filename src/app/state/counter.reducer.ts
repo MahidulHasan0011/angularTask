@@ -13,28 +13,18 @@ const _counterReducer = createReducer(
     username,
     password
   })),
-  on(changeIsUserStatus,(state)=>{
+  on(changeIsUserStatus,(state,action)=>{
     return{
      ...state,
-     isUser:true
+     isUser:action.isUser
+
+    //  isUser:true
 
     }
  })
 
 )
 
-
-
-
-// import { saveUserInfo } from "./counter.action";
-
-// const _counterReducer = createReducer(
-//   initialUserInfo,
-//   on(saveUserInfo, (state, { username, password }) => {
-//     localStorage.setItem('userInfo', JSON.stringify({ username, password }));
-//     return { ...state, username, password };
-//   })
-// );
 
 
 
